@@ -1,0 +1,34 @@
+﻿@model ChannelsCollectionViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<main class="mt-3 mb-5 container">
+    <h3>Your channels</h3>
+    <hr />
+    <div class="channel-group" id="followed-channels">
+        @foreach (var channel in Model.FollowedChannels)
+        {
+            <div class="channel-box">
+                <h5>@channel.Name</h5>
+                <hr />
+                <h5>@channel.Type Channel</h5>
+                <hr />
+                <h5>Followers @channel.Followers</h5>
+                <hr />
+                <h5>Following</h5>
+            </div>
+        }
+    </div>
+    <h3>Suggested</h3>
+    <hr />
+    <div class="channel-group">
+        <partial name="_ChannelsListPartial" model="@Model.SuggestedChannels"/>
+    </div>
+    <h3>Other</h3>
+    <hr />
+    <div class="channel-group" id="other-channels">
+        <partial name="_ChannelsListPartial" model="@Model.OtherChannels" />
+    </div>
+</main>
+

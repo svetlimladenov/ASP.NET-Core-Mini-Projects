@@ -1,0 +1,73 @@
+﻿.bg-mishmash {
+    background-color: #4B0082;
+}
+
+.text-mishmash {
+    color: #4B0082;
+}
+
+.nav-link-white {
+    color: #FFFFFF;
+}
+
+.hr-2 {
+    height: 2px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    border: 0;
+    width: 100%;
+}
+
+.nav-item form button.nav-link {
+    background-color: #4B0082;
+    border: none;
+}
+
+
+.channel-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.channel-box {
+    flex: 0 0 16rem;
+    background-color: #4B0082;
+    color: white;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+hr {
+    background: #4b0082;
+    height: 2px;
+}
+
+.channel-box hr {
+    background: #ffffff;
+}
+
+.container {
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+.channelActions {
+    display: flex;
+    justify-content: space-around;
+}
+    .channelActions a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .channelActions button {
+        background-color: #4B0082;
+        border: none;
+        color: white;
+    }

@@ -1,0 +1,18 @@
+﻿@model ICollection<ChannelBoxViewModel>
+<div class="channel-group" id="other-channels">
+    @foreach (var channel in Model)
+    {
+        <div class="channel-box">
+            <h5>@channel.Name</h5>
+            <hr />
+            <h5>@channel.Type Channel</h5>
+            <hr />
+            <h5>Followers @channel.Followers</h5>
+            <hr />
+            <div class="channelActions">
+                <button class="follow-channel" data-channel-id="@channel.Id">Follow</button>
+                <a asp-controller="Channels" asp-action="Details" asp-route-id="@channel.Id">Details</a>
+            </div>
+        </div>
+    }
+</div>
