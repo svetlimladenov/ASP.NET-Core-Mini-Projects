@@ -7,7 +7,7 @@
 
 
     <link rel="stylesheet" href="~/css/reset-css.css" />
-    <environment include="Development">
+    <environment include="Development,Stage,Production">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
     <link rel="stylesheet" href="~/css/style.css" />
@@ -24,8 +24,11 @@
                     <li class="nav-item">
                         <a class="nav-link nav-link-white active" href="/">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-white active" asp-controller="CarAd" asp-action="Create">Add ad for a car</a>
+                    </li>
                     @if (this.User.Identity.IsAuthenticated)
-                    {
+                    { 
                         <li class="nav-item">
                             <a class="nav-link nav-link-white active" asp-controller="Channels" asp-action="MyChannels">My Channels</a>
                         </li>
@@ -50,9 +53,9 @@
                             <a class="nav-link nav-link-white active" asp-area="Identity" asp-page="/Account/Register">Register</a>
                         </li>
 
-                        
+
                     }
-                    
+
                     @RenderSection("MenuItems", false);
 
                 </ul>

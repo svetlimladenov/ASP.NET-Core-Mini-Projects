@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using MishMashExamASP.NET.Filters;
 using MishMashExamASP.NET.Models;
 using MishMashExamASP.NET.Services.Channels;
 

@@ -69,3 +69,4 @@ D:\SoftUni\ASP.NET-Core-Mini-Projects\MishMashExamWithAspNetCore\MishMashExamASP
 D:\SoftUni\ASP.NET-Core-Mini-Projects\MishMashExamWithAspNetCore\MishMashExamASP.NET\MishMashExamASP.NET\obj\Debug\netcoreapp2.2\Razor\Views\Trash\Index.g.cshtml.cs
 D:\SoftUni\ASP.NET-Core-Mini-Projects\MishMashExamWithAspNetCore\MishMashExamASP.NET\MishMashExamASP.NET\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ChannelsListPartial.g.cshtml.cs
 D:\SoftUni\ASP.NET-Core-Mini-Projects\MishMashExamWithAspNetCore\MishMashExamASP.NET\MishMashExamASP.NET\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\LatestUser\default.g.cshtml.cs
+D:\SoftUni\ASP.NET-Core-Mini-Projects\MishMashExamWithAspNetCore\MishMashExamASP.NET\MishMashExamASP.NET\obj\Debug\netcoreapp2.2\Razor\Views\CarAd\Create.g.cshtml.cs

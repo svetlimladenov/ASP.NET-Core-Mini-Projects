@@ -1,15 +1,23 @@
-﻿
+﻿@using Microsoft.AspNetCore.Hosting
+@using Microsoft.Extensions.Configuration
+@using MishMashExamASP.NET.Services
+@inject IHostingEnvironment EnvService
+@inject IConfiguration Configuration
+@inject ICounterService CounterService
 @{
     ViewData["Title"] = "Index";
 }
 
-<nav>
-    <ul>
-        <li><a>Home</a></li>
-        <li><a>About</a></li>
-        <li><a>Contacts</a></li>
-    </ul>
-    
-    <vc:latest-user text="Zaebi"></vc:latest-user>
-</nav>
+    <h1>@CounterService.GetCount()</h1>
 
+<div>
+    @EnvService.EnvironmentName
+</div>
+
+<h1>@Configuration["Greeting:Morning"]</h1>
+<h1>@Configuration["Greeting:Evening"]</h1>
+    
+<vc:latest-user text="Zaebi"></vc:latest-user>
+
+
+    

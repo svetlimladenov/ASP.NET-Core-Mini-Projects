@@ -9,12 +9,16 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using MishMashExamASP.NET.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MishMashExamASP.NET.Data.Models;
+using MishMashExamASP.NET.Filters;
 using MishMashExamASP.NET.Middlewares;
+using MishMashExamASP.NET.ModelBinders;
+using MishMashExamASP.NET.Services;
 using MishMashExamASP.NET.Services.Channels;
 using MishMashExamASP.NET.Services.Users;
 
@@ -55,12 +59,22 @@ namespace MishMashExamASP.NET
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options =>
+            {
+                options.ModelBinderProviders.Insert(0, new DateTimeToYearModelBinderProvider());
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                options.Filters.Add(new AddCustomHeaderOnExeptionFilterAttribute());
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                
 
 
             //services
             services.AddScoped<IChannelServices, ChannelServices>();
             services.AddTransient<IUserServices, UserServices>();
+
+
+            services.AddScoped<ICounterService, CounterService>();
+            services.AddTransient<MyAuthorizeFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +82,10 @@ namespace MishMashExamASP.NET
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage(new DeveloperExceptionPageOptions()
+                {
+                    SourceCodeLineCount = 50
+                }); 
                 app.UseDatabaseErrorPage();
             }
             else
@@ -85,6 +102,16 @@ namespace MishMashExamASP.NET
             app.UseAuthentication();
 
             app.UseMiddleware<SeedRolesMiddleware>();
+
+            app.Use( async (context, next) =>
+            {
+                var username = context.User.Identity.Name;
+                if (username != null)
+                {
+                    context.Response.Cookies.Append("Username", username, options: new CookieOptions() { HttpOnly = true});
+                }
+                await next();
+            });
 
             app.UseMvc(routes =>
             {
